@@ -4,15 +4,15 @@
 #include<string>
 #include "utilities.h"
 
-const int DEFAULT_FORCE = 5;
-const int DEFAULT_MAX_HP = 100;
+const int INITIAL_FORCE = 5;
+const int INITIAL_COINS = 10;
+const int MAX_HP = 100;
 
 class Player {
 private:
     std::string m_name;
     int m_level;
     int m_force;
-    int m_maxHP;
     int m_HP;
     int m_coins;
 
@@ -26,13 +26,13 @@ public:
      * @result
      *      An instance of Player
     */
-    explicit Player(const char* m_name, int m_maxHP = 100, int force = 5);
+    explicit Player(const char* m_name);
 
-    Player(const Player &player) = default;
+    Player(const Player &player) = delete;
 
-    ~Player() = default;
+    Player &operator=(const Player &player) = delete;
 
-    Player &operator=(const Player &player) = default;
+    virtual ~Player() = default;
 
     /*
      *  prints the player's attributes
@@ -72,7 +72,7 @@ public:
     *  @return
     *          void
     */
-    void heal(int pointsToHeal);
+    virtual void heal(int pointsToHeal);
 
     /*
     *  reduces damagePoints to the player's (not less than 0)
@@ -98,7 +98,7 @@ public:
     *  @return
     *          void
     */
-    void addCoins(int coinsToAdd);
+    virtual void addCoins(int coinsToAdd);
 
     /*
     *  pay the coins if player has enough money
@@ -114,7 +114,7 @@ public:
     *  @return
     *          player Strength attribute - int
     */
-    int getAttackStrength() const;
+    virtual int getAttackStrength() const;
 };
 
 #endif //MTM_HW2_PLAYER_H
