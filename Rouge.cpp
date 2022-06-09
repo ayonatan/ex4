@@ -3,3 +3,15 @@
 //
 
 #include "Rouge.h"
+
+void addCoins(int coinsToAdd)override
+{
+    if (coinsToAdd > 0) 
+    {
+        m_coins += 2*coinsToAdd;
+    }
+    else
+    {
+        //throw?
+    }
+}

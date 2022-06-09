@@ -4,5 +4,13 @@
 
 #ifndef MTM_HW4_FIGHTER_H
 #define MTM_HW4_FIGHTER_H
+#include "Player.h"
 
+class Fighter : public Fighter
+{
+public:
+    Fighter(std::string name) = default;
+    ~Fighter() = default;
+    int getAttackStrength() const override;
+};
 #endif //MTM_HW4_FIGHTER_H

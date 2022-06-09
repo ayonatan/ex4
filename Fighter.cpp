@@ -3,3 +3,7 @@
 //
 
 #include "Fighter.h"
+int getAttackStrength() const override
+{
+    return (2 * m_force) + m_level;
+}

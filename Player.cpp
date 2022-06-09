@@ -1,28 +1,15 @@
 #include "Player.h"
 
-Player::Player(const char* name, int maxHP, int force) :
+Player::Player(const char* name) :
         m_name(name),
         m_level(1),
-        m_coins(0)
-{
-    if (force <= 0) {
-        m_force = DEFAULT_FORCE;
-    } else {
-        m_force = force;
-    }
-    if (maxHP <= 0) {
-        m_HP = DEFAULT_MAX_HP;
-        m_maxHP = DEFAULT_MAX_HP;
-
-    } else {
-        m_HP = maxHP;
-        m_maxHP = maxHP;
-    }
-}
+        m_force(INITIAL_FORCE),
+        m_HP(MAX_HP),
+        m_coins(INITIAL_COINS) {}
 
 void Player::printInfo()const
 {
-    printPlayerInfo(m_name.c_str(), m_level, m_force, m_HP, m_coins);
+    printPlayerInfo(std::cout, m_name, m_job, m_level, m_force, m_HP, m_coins);
 }
 
 

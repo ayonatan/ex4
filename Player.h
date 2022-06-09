@@ -9,7 +9,7 @@ const int INITIAL_COINS = 10;
 const int MAX_HP = 100;
 
 class Player {
-private:
+protected:
     std::string m_name;
     int m_level;
     int m_force;
