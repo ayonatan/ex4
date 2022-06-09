@@ -1,5 +1,10 @@
-//
-// Created by yonat on 06/06/2022.
-//
-
 #include "Fairy.h"
+
+void Fairy::applyEncounter(Player &player) const {
+    const Wizard *wizard = dynamic_cast<const Wizard *>(wizard);
+    if (wizard != nullptr) {
+        printFairyMessage(true);
+        player.heal(10);
+    }
+    printFairyMessage(false);
+}
