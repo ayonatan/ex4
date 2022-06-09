@@ -1,7 +1,10 @@
 #include "Pitfall.h"
 
-
-void Pitfall::pitfallDamage()
-{
-
+void PitFall::applyEncounter(Player &player) const {
+    const Rouge *rouge = dynamic_cast<const Rouge *>(player);
+    if (rouge == nullptr) {
+        printPitfallMessage(false);
+        player.damage(-10);
+    }
+    printPitfallMessage(true);
 }
