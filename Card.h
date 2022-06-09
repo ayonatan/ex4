@@ -1,8 +1,10 @@
 #ifndef MTM_HW2_CARD_H
 #define MTM_HW2_CARD_H
+
 #include "Player.h"
 #include "utilities.h"
-#include<string>
+#include <string>
+#include <ostream>
 
 /*
  *  CardType:
@@ -12,7 +14,7 @@
  *  HEAL - Increase your player's HP by 'm_heal' points  of CardStats (no more than maxHP points).
  *  TREASURE - Get 'm_profit' coins of CardStats.
 */
-enum class CardType {Battle, Buff, Heal, Treasure}; // The type of the Card
+//enum class CardType {Battle, Buff, Heal, Treasure}; // The type of the Card
 
 class Card {
 public:
@@ -24,7 +26,7 @@ public:
      * @return
      *      A new instance of Card.
     */
-    Card(CardType type, const CardStats& stats);
+    Card(std::string cardName);
 
 
     /*
@@ -34,7 +36,7 @@ public:
      * @return
      *      void
     */
-    void applyEncounter(Player& player) const;
+    virtual void applyEncounter(Player &player) const = 0;
 
 
     /*
@@ -43,27 +45,26 @@ public:
      * @return
      *      void
     */
-    void printInfo() const;
+    virtual void printInfo() const = 0;
 
 
-    /*
-     * C'tor to the "default card" - Treasure card that gives 0 coins
-    */
-    Card(): m_effect(CardType::Treasure), m_stats() {}
 
 
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    Card(const Card&) = default;
-    ~Card() = default;
-    Card& operator=(const Card& other) = default;
+
+    ///check if needed
+    Card(const Card &) = delete;
+
+    virtual ~Card(){}
+
+    ///check if needed
+    Card &operator=(const Card &other) = delete;
 
 
 private:
-    CardType m_effect;
-    CardStats m_stats;
-
+    std::string m_cardName;
 };
 
 #endif //MTM_HW2_CARD_H
