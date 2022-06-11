@@ -12,6 +12,8 @@ public:
     Rouge(std::string name) = default;
     ~Rouge() = default;
     void addCoins(int coinsToAdd)override;
+    void printInfo() const override;
+    Rouge* clone() const override;
 };
 
 #endif //MTM_HW4_ROUGE_H

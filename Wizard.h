@@ -11,6 +11,8 @@ class Wizard : public Player
 public:
     Wizard(std::string name) = default;
     ~Wizard() = default;
-    void heal(int pointsToHeal)override;
+    void heal(int pointsToHeal) override;
+    void printInfo() const override;
+    Wizard* clone() const override;
 };
 #endif //MTM_HW4_WIZARD_H

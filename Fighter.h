@@ -12,5 +12,7 @@ public:
     Fighter(std::string name) = default;
     ~Fighter() = default;
     int getAttackStrength() const override;
+    void printInfo() const override;
+    Fighter* clone() const override;
 };
 #endif //MTM_HW4_FIGHTER_H

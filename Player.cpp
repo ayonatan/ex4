@@ -1,21 +1,21 @@
 #include "Player.h"
 
-Player::Player(const char* name) :
+Player::Player(std::string name) :
         m_name(name),
         m_level(1),
         m_force(INITIAL_FORCE),
         m_HP(MAX_HP),
         m_coins(INITIAL_COINS) {}
 
-void Player::printInfo()const
+std::ostream& operator<<(std::ostream& os, const Player &player)const
 {
-    printPlayerInfo(std::cout, m_name, m_job, m_level, m_force, m_HP, m_coins);
+    player.printInfo();
 }
-
 
 void Player::levelUp()
 {
-    if (m_level < 10) {
+    if (m_level < 10) 
+    {
         m_level++;
     }
 }

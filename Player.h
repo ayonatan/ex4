@@ -16,16 +16,8 @@ protected:
     int m_HP;
     int m_coins;
 
-public:
-    /*
-     * C'tor Player:
-     *
-     * @param m_name - The name of the player.
-     * @param m_maxHP - max HP for the player.
-     * @param force - the starting force rate.
-     * @result
-     *      An instance of Player
-    */
+public:   
+
     explicit Player(const char* m_name);
 
     Player(const Player &player) = delete;
@@ -34,13 +26,11 @@ public:
 
     virtual ~Player() = default;
 
-    /*
-     *  prints the player's attributes
-     *
-     *  @return
-     *          void
-     */
-    void printInfo() const;
+    virtual Player* clone() const = 0;
+
+    virtual void printInfo() const = 0;
+
+    friend std::ostream& operator<<(std::ostream& os, const Player &player)const;
 
     /*
     *  promotes the player to the next level, unless its max level
@@ -81,7 +71,6 @@ public:
     *          void
     */
     void damage(int damagePoints);
-
 
     /*
     *  checks id player has lost

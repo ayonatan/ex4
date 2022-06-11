@@ -4,7 +4,7 @@
 
 #include "Rouge.h"
 
-void addCoins(int coinsToAdd)override
+void Rouge::addCoins(int coinsToAdd)
 {
     if (coinsToAdd > 0) 
     {
@@ -14,4 +14,14 @@ void addCoins(int coinsToAdd)override
     {
         //throw?
     }
+}
+
+void Rouge::printInfo() const
+{
+    printPlayerDetails(os, m_name, "Rouge", m_level, m_force, m_HP, m_coins);
+}
+
+Rouge* clone() const
+{
+    return new Rouge(m_name);
 }

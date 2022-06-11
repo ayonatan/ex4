@@ -3,7 +3,18 @@
 //
 
 #include "Fighter.h"
-int getAttackStrength() const override
+
+int Fighter::getAttackStrength() const
 {
     return (2 * m_force) + m_level;
+}
+
+void Fighter::printInfo() const
+{
+    printPlayerDetails(os, m_name, "Fighter", m_level, m_force, m_HP, m_coins);
+}
+
+Fighter* Fighter::clone() const
+{
+    return new Fighter(m_name);
 }
