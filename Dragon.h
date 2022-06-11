@@ -14,6 +14,7 @@ public:
     operator=(const Dragon &dragon) = default;
 
     void printInfo() const override;
+    Dragon *clone() const override;
 
     void applyEncounter(Player &player) const override;
 

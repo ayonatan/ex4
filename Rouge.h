@@ -11,6 +11,9 @@ class Rouge : public Player
 public:
     Rouge(std::string name) = default;
     ~Rouge() = default;
+    Rouge(const Rouge &rouge) = delete;
+//    Rouge &operator=(const Rouge &rouge) = default;
+
     void addCoins(int coinsToAdd)override;
     void printInfo() const override;
     Rouge* clone() const override;

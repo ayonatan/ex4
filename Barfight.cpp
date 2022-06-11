@@ -13,3 +13,7 @@ void Barfight::applyEncounter(Player &player) const {
 void printInfo() const {
     printCardDetails(std::cout,"Barfight");
 }
+
+Barfight *clone() const {
+    return new Barfight(m_name);
+}

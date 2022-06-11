@@ -19,3 +19,7 @@ void Goblin::applyEncounter(Player &player) const {
 void printInfo() const {
     printMonsterDetails(std, m_force, m_damage, m_loot, false);
 }
+
+Goblin *clone() const {
+    return new Goblin(m_name);
+}

@@ -17,3 +17,7 @@ void Dragon::applyEncounter(Player &player) const {
         /// printBattleResult(false);
     }
 }
+
+Dragon *clone() const {
+    return new Dragon(m_name);
+}

@@ -10,6 +10,7 @@ public:
     ~Barfight() override = default; ///override?
 
     void printInfo() const override;
+    Barfight *clone() const override;
 
     void applyEncounter(Player &player) const override;
 };

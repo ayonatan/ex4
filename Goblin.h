@@ -14,6 +14,7 @@ public:
     void applyEncounter(Player& player)const override;
 
     void printInfo() const override;
+    Goblin *clone() const override;
 
 
 ///private: add?

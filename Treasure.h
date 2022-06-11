@@ -8,6 +8,8 @@ public:
     void applyEncounter(Player &player) const override;
 
     void printInfo() const override;
+    Treasure *clone() const override;
+
 };
 
 

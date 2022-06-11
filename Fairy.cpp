@@ -12,3 +12,7 @@ void Fairy::applyEncounter(Player &player) const {
 void printInfo() const {
     printCardDetails(std::cout,"Fairy");
 }
+
+Fairy *clone() const {
+    return new Fairy(m_name);
+}

@@ -9,15 +9,15 @@ public:
 
     Vampire(const Vampire &vampire) = default;
 
-    ~Dragon() = default
-
-    override;
+    ~Vampire() override = default;
 
     operator=(const Vampire &vampire) = default;
 
     void applyEncounter(Player &player) const override;
 
     void printInfo() const override;
+
+    Vampire *clone() const override;
 
 
 ///private: add?

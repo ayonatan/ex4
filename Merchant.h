@@ -8,6 +8,7 @@ public:
     void applyEncounter(Player &player) const override;
 
     void printInfo() const override;
+    Merchant *clone() const override;
 
 };
 

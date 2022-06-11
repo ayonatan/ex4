@@ -20,3 +20,7 @@ void Merchant::applyEncounter(Player &player) const {
 void printInfo() const {
     printCardDetails(std::cout,"Merchant");
 }
+
+Merchant *clone() const {
+    return new Merchant(m_name);
+}

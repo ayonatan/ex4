@@ -11,6 +11,9 @@ class Wizard : public Player
 public:
     Wizard(std::string name) = default;
     ~Wizard() = default;
+    Wizard(const Wizard &wizard) = delete;
+   // Wizard &operator=(const Wizard &wizard) = default;
+
     void heal(int pointsToHeal) override;
     void printInfo() const override;
     Wizard* clone() const override;

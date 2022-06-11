@@ -10,3 +10,7 @@ void Treasure::applyEncounter(Player &player) const {
 void printInfo() const {
     printCardDetails(std::cout,"Treasure");
 }
+
+Treasure *clone() const {
+    return new Treasure(m_name);
+}

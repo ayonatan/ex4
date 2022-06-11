@@ -12,3 +12,7 @@ void PitFall::applyEncounter(Player &player) const {
 void printInfo() const {
     printCardDetails(std::cout,"PitFall");
 }
+
+PitFall *clone() const {
+    return new PitFall(m_name);
+}

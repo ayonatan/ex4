@@ -9,6 +9,7 @@ public:
     void applyEncounter(Player &player) const override;
 
     void printInfo() const override;
+    Fairy *clone() const override;
 
 };
 

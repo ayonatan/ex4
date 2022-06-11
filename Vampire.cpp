@@ -22,3 +22,7 @@ void Vampire::applyEncounter(Player &player) const {
 void printInfo() const {
     printMonsterDetails(std, m_force, m_damage, m_loot, false);
 }
+
+Vampire *clone() const {
+    return new Vampire(m_name);
+}
