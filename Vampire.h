@@ -5,15 +5,20 @@
 
 class Vampire : public Player {
 public:
-    Vampire(const char* m_name);
+    Vampire(const char *m_name);
 
     Vampire(const Vampire &vampire) = default;
 
-    ~Dragon() = default override;
+    ~Dragon() = default
+
+    override;
 
     operator=(const Vampire &vampire) = default;
 
     void applyEncounter(Player &player) const override;
+
+    void printInfo() const override;
+
 
 ///private: add?
 

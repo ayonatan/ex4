@@ -5,6 +5,11 @@ void Barfight::applyEncounter(Player &player) const {
     if (fighter == nullptr) {
         printBarfightMessage(false);
         player.damage(-10);
+    } else {
+        printBarfightMessage(true);
     }
-    printBarfightMessage(true);
+}
+
+void printInfo() const {
+    printCardDetails(std::cout,"Barfight");
 }

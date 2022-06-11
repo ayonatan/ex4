@@ -6,3 +6,7 @@ void Treasure::applyEncounter(Player &player) const {
     player.addCoins(10);
     printTreasureMessage();
 }
+
+void printInfo() const {
+    printCardDetails(std::cout,"Treasure");
+}

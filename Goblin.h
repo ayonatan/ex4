@@ -7,12 +7,14 @@ class Goblin : public Player {
 public:
     Goblin(const char* m_name);
 
-    Goblin(const Goblin &goblin) = default;
 
     ~Goblin() =default override;
 
     operator=(const Goblin &goblin) = default;
     void applyEncounter(Player& player)const override;
+
+    void printInfo() const override;
+
 
 ///private: add?
 

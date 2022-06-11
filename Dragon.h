@@ -13,7 +13,10 @@ public:
 
     operator=(const Dragon &dragon) = default;
 
+    void printInfo() const override;
+
     void applyEncounter(Player &player) const override;
+
 
 ///private: add?
 

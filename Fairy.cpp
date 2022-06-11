@@ -8,3 +8,7 @@ void Fairy::applyEncounter(Player &player) const {
     }
     printFairyMessage(false);
 }
+
+void printInfo() const {
+    printCardDetails(std::cout,"Fairy");
+}

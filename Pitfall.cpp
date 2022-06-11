@@ -8,3 +8,7 @@ void PitFall::applyEncounter(Player &player) const {
     }
     printPitfallMessage(true);
 }
+
+void printInfo() const {
+    printCardDetails(std::cout,"PitFall");
+}

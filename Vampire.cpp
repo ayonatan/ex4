@@ -1,6 +1,10 @@
 #include "Vampire.h"
 
-Vampire::Vampire(const char* m_name) : Player(const char* m_name),m_force(10), m_loot(2), m_damage(10) {}
+Vampire::Vampire(const char *m_name) : Player(
+
+const char *m_name
+),m_force(10), m_loot(2), m_damage(10) {
+}
 
 
 void Vampire::applyEncounter(Player &player) const {
@@ -15,7 +19,6 @@ void Vampire::applyEncounter(Player &player) const {
     }
 }
 
-std::ostream &operator<<(std::ostream &os, const Goblin &goblin) {
-    printMonsterDetails(std, m_force, m_damage, m_loot, true);
-    return os;
+void printInfo() const {
+    printMonsterDetails(std, m_force, m_damage, m_loot, false);
 }
