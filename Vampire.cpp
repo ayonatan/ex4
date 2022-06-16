@@ -1,33 +1,32 @@
-#ifndef MTM_HW4_VAMPIRE_H
-#define MTM_HW4_VAMPIRE_H
+//
+// Created by yonat on 06/06/2022.
+//
 
-#include "Card.h"
+#include "Wizard.h"
 
-class Vampire : public Card {
-public:
-    Vampire();
+Wizard::Wizard(std::string name): Player(name){}
 
-    Vampire(const Vampire &vampire) = default;
+void Wizard::heal(int pointsToHeal)
+{
+    if (pointsToHeal > 0) 
+    {
+        if (m_HP + pointsToHeal < MAX_HP) 
+        {
+            m_HP += pointsToHeal;
+        } 
+        else
+        {
+            m_HP = m_maxHP;
+        }
+    }
+}
 
-    ~Vampire() override = default;
+void printInfo() const
+{
+    printPlayerDetails(os, m_name, "Wizard", m_level, m_force, m_HP, m_coins);
+}
 
-    Vampire &operator=(const Vampire &vampire) = default;
-
-    void applyEncounter(Player &player) const override;
-
-    void printInfo() const override;
-
-    Vampire *clone() const override;
-
-
-///private: add?
-private:
-    int m_force;
-    int m_loot;
-    int m_damage;
-
-};
-
-#endif //MTM_HW4_DRAGON_H
-
-#endif //MTM_HW4_VAMPIRE_H
+Wizard* clone() const
+{
+    return new Wizard(m_name);
+}
