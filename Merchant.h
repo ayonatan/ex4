@@ -5,6 +5,7 @@
 
 class Merchant : public Card {
 public:
+    Merchant();
     void applyEncounter(Player &player) const override;
 
     void printInfo() const override;
