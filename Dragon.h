@@ -1,25 +1,29 @@
 #ifndef MTM_HW4_DRAGON_H
 #define MTM_HW4_DRAGON_H
 
-#include "Player.h"
+#include "Card.h"
 
-class Dragon : public Player {
+class Dragon : public Card {
 public:
-    Dragon(const char* m_name);
+    Dragon();
 
     Dragon(const Dragon &dragon) = default;
 
-    ~Dragon() = default override;
+    ~Dragon() override = default;
 
-    operator=(const Dragon &dragon) = default;
+    Dragon &operator=(const Dragon &dragon) = default;
 
     void printInfo() const override;
+
     Dragon *clone() const override;
 
     void applyEncounter(Player &player) const override;
 
 
 ///private: add?
-
+private:
+    int m_force;
+    int m_loot;
+    int m_damage;
 
 #endif //MTM_HW4_DRAGON_H
