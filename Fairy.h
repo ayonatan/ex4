@@ -6,9 +6,12 @@
 
 class Fairy : public Card {
 public:
+    Fairy();
+
     void applyEncounter(Player &player) const override;
 
     void printInfo() const override;
+
     Fairy *clone() const override;
 
 };
