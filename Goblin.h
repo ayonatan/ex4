@@ -1,16 +1,15 @@
 #ifndef MTM_HW4_GOBLIN_H
 #define MTM_HW4_GOBLIN_H
 
-#include "Player.h"
+#include "Card.h"
 
-class Goblin : public Player {
+class Goblin : public Card {
 public:
-    Goblin(const char* m_name);
+    Goblin();
 
+    ~Goblin() override = default;
 
-    ~Goblin() =default override;
-
-    operator=(const Goblin &goblin) = default;
+    Goblin &operator=(const Goblin &goblin) = default;
     void applyEncounter(Player& player)const override;
 
     void printInfo() const override;
@@ -18,6 +17,10 @@ public:
 
 
 ///private: add?
+private:
+    int m_force;
+    int m_loot;
+    int m_damage;
 
 };
 
