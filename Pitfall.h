@@ -4,6 +4,7 @@
 
 class PitFall : public Card{
 public:
+    PitFall();
     void applyEncounter(Player& player)const override;
     void printInfo() const override;
     PitFall *clone() const override;
