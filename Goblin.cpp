@@ -1,7 +1,6 @@
 #include "Goblin.h"
 
-Goblin::Goblin(const char *m_name) : Player(const char *m_name) ,m_force(6), m_loot(2), m_damage(10) {}
-
+Goblin::Goblin() : Card("Goblin"), m_force(6), m_loot(2), m_damage(10) {}
 
 void Goblin::applyEncounter(Player &player) const {
     if (player.getAttackStrength() >= m_force) {
