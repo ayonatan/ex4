@@ -1,23 +1,29 @@
-#include "Dragon.h"
+#ifndef MTM_HW4_DRAGON_H
+#define MTM_HW4_DRAGON_H
 
-Dragon::Dragon() : Card("Dragon"),m_force(25), m_loot(1000), m_damage(100) {}
+#include "Card.h"
 
-void printInfo() const {
-    printMonsterDetails(std, m_force, m_damage, m_loot, true);
-}
+class Dragon : public Card {
+public:
+    Dragon();
 
-void Dragon::applyEncounter(Player &player) const {
-    if (player.getAttackStrength() >= m_force) {
-        player.addCoins(m_loot);
-        player.levelUp();
+    Dragon(const Dragon &dragon) = default;
 
-        /// printBattleResult(true);
-    } else {
-        player.damage(m_damage);
-        /// printBattleResult(false);
-    }
-}
+    ~Dragon() override = default;
 
-Dragon *clone() const {
-    return new Dragon(m_name);
-}
+    Dragon &operator=(const Dragon &dragon) = default;
+
+    void printInfo() const override;
+
+    Dragon *clone() const override;
+
+    void applyEncounter(Player &player) const override;
+
+
+///private: add?
+private:
+    int m_force;
+    int m_loot;
+    int m_damage;
+
+#endif //MTM_HW4_DRAGON_H
