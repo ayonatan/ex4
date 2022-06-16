@@ -18,7 +18,7 @@ protected:
 
 public:   
 
-    explicit Player(const char* m_name);
+    explicit Player(std::string m_name);
 
     Player(const Player &player) = delete;
 
