@@ -1,5 +1,10 @@
 #include "Barfight.h"
 
+Barfight::Barfight()
+{
+    m_cardName = "BarFight";
+}
+
 void Barfight::applyEncounter(Player &player) const {
     const Fighter *fighter = dynamic_cast<const Fighter *>(player);
     if (fighter == nullptr) {
