@@ -1,8 +1,26 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
 
-class Mtmchkin{
+#include "Player.h"
+#include "Card.h"
+#include <fstream>
+#include <deque>
+#include <memory>
 
+using std::ifstream;
+using std::ofstream;
+using std::cerr;
+using std::endl;
+using std::deque;
+using std::unique_ptr;
+
+
+class Mtmchkin {
+    int m_numberOfRounds;
+    deque<unique_ptr<Player>> m_winnersDeck;
+    deque<unique_ptr<Player>> m_losersDeck;
+    deque<unique_ptr<Card>> m_cardsDeck;
+    deque<unique_ptr<Player>> m_currentPlayersQueue;
 public:
 
     /*
@@ -47,7 +65,6 @@ public:
     */
     int getNumberOfRounds() const;
 };
-
 
 
 #endif /* MTMCHKIN_H_ */
