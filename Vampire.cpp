@@ -1,24 +1,33 @@
-#include "Vampire.h"
+#ifndef MTM_HW4_VAMPIRE_H
+#define MTM_HW4_VAMPIRE_H
 
-Vampire::Vampire() : Card("Vampire"), m_force(10), m_loot(2), m_damage(10) {}
+#include "Card.h"
+
+class Vampire : public Card {
+public:
+    Vampire();
+
+    Vampire(const Vampire &vampire) = default;
+
+    ~Vampire() override = default;
+
+    Vampire &operator=(const Vampire &vampire) = default;
+
+    void applyEncounter(Player &player) const override;
+
+    void printInfo() const override;
+
+    Vampire *clone() const override;
 
 
-void Vampire::applyEncounter(Player &player) const {
-    if (player.getAttackStrength() >= m_force) {
-        player.addCoins(m_loot);
-        player.levelUp();
+///private: add?
+private:
+    int m_force;
+    int m_loot;
+    int m_damage;
 
-        /// printBattleResult(true);
-    } else {
-        player.damage(m_damage);
-        /// printBattleResult(false);
-    }
-}
+};
 
-void printInfo() const {
-    printMonsterDetails(std, m_force, m_damage, m_loot, false);
-}
+#endif //MTM_HW4_DRAGON_H
 
-Vampire *clone() const {
-    return new Vampire(m_name);
-}
+#endif //MTM_HW4_VAMPIRE_H
