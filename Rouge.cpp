@@ -4,6 +4,8 @@
 
 #include "Rouge.h"
 
+Rouge::Rouge(std::string name): Player(name){}
+
 void Rouge::addCoins(int coinsToAdd)
 {
     if (coinsToAdd > 0) 
