@@ -9,7 +9,7 @@
 class Wizard : public Player
 {
 public:
-    Wizard(std::string name) = default;
+    Wizard(std::string name);
     ~Wizard() = default;
     Wizard(const Wizard &wizard) = delete;
    // Wizard &operator=(const Wizard &wizard) = default;
