@@ -1,7 +1,3 @@
-//
-// Created by yonat on 06/06/2022.
-//
-
 #ifndef MTM_HW4_FIGHTER_H
 #define MTM_HW4_FIGHTER_H
 
@@ -9,9 +5,9 @@
 
 class Fighter : public Player {
 public:
-    Fighter(std::string name) = default;
+    Fighter(std::string name);
 
-    ~Fighter() = default;
+    ~Fighter() override = default;
 
     Fighter(const Fighter &fighter) = delete;
 
