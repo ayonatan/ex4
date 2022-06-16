@@ -26,7 +26,7 @@ public:
      * @return
      *      A new instance of Card.
     */
-    Card(std::string cardName);
+    Card(std::string name) : m_cardName(name) {}
 
 
     /*
@@ -57,13 +57,13 @@ public:
     ///check if needed
     Card(const Card &) = delete;
 
-    virtual ~Card(){}
+    virtual ~Card() {}
 
     ///check if needed
     Card &operator=(const Card &other) = delete;
 
 
-private:
+protected:
     std::string m_cardName;
 };
 
