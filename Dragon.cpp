@@ -1,6 +1,6 @@
 #include "Dragon.h"
 
-Dragon::Dragon(std::string name) : Player(name), m_force(25), m_loot(1000), m_damage(100) {}
+Dragon::Dragon() : Card("Dragon"),m_force(25), m_loot(1000), m_damage(100) {}
 
 void printInfo() const {
     printMonsterDetails(std, m_force, m_damage, m_loot, true);
