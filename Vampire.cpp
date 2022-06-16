@@ -1,10 +1,6 @@
 #include "Vampire.h"
 
-Vampire::Vampire(const char *m_name) : Player(
-
-const char *m_name
-),m_force(10), m_loot(2), m_damage(10) {
-}
+Vampire::Vampire() : Card("Vampire"), m_force(10), m_loot(2), m_damage(10) {}
 
 
 void Vampire::applyEncounter(Player &player) const {
