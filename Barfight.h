@@ -5,7 +5,7 @@
 
 class Barfight : public Card {
 public:
-    explicit Barfight(const char *name) = default;
+    Barfight(); ///explicit
 
     ~Barfight() override = default; ///override?
 
