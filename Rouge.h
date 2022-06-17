@@ -11,17 +11,17 @@ class Rouge : public Player {
 public:
     Rouge(std::string name);
 
-    ~Rouge() = default;
+    ~Rouge() = default override;
 
-    Rouge(const Rouge &rouge) = delete;
+    Rouge(const Rouge &rouge) = default;
 
-    Rouge &operator=(const Rouge &rouge) = default; ////?
+    Rouge &operator=(const Rouge &rouge) = default; 
 
     void addCoins(int coinsToAdd) override;
 
     void printInfo() const override;
 
-    Rouge *clone() const override;
+    std::unique_ptr<Rouge> clone() const override;
 };
 
 #endif //MTM_HW4_ROUGE_H

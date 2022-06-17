@@ -1,8 +1,6 @@
 #include "Fairy.h"
 
-Fairy::Fairy() : Card() {
-    m_cardName = "Fairy";
-}
+Fairy::Fairy() : Card("Fairy") {}
 
 void Fairy::applyEncounter(Player &player) const {
     const Wizard *wizard = dynamic_cast<const Wizard *>(wizard);
@@ -17,7 +15,7 @@ void printInfo() const {
     printCardDetails(std::cout, "Fairy");
 }
 
-Fairy *clone() const {
-    return new Fairy(m_name);
+std::unique_ptr<Fairy> Fairy::clone() const {
+    return std::unique_ptr<Fairy>(new Fairy(m_name));
 }
 

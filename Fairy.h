@@ -8,11 +8,17 @@ class Fairy : public Card {
 public:
     Fairy();
 
+    ~Fairy() = default override;
+
+    Fairy& operator=(const Fairy& fairy) = default;
+
+    Fairy(const Fairy& fairy) = default;
+
     void applyEncounter(Player &player) const override;
 
     void printInfo() const override;
 
-    Fairy *clone() const override;
+    std::unique_ptr<Fairy> clone() const override;
 
 };
 

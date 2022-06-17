@@ -5,10 +5,19 @@
 
 class Treasure : public Card {
 public:
+    Treasure();
+
+    ~Treasure() = default override;
+
+    Treasure(const Treasure& treasure) = default;
+
+    Treasure& operator=(const Treasure& treasure) = default;
+
     void applyEncounter(Player &player) const override;
 
     void printInfo() const override;
-    Treasure *clone() const override;
+    
+    std::unique_ptr<Treasure> clone() const override;
 
 };
 

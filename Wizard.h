@@ -10,12 +10,17 @@ class Wizard : public Player
 {
 public:
     Wizard(std::string name);
-    ~Wizard() = default;
-    Wizard(const Wizard &wizard) = delete;
-   // Wizard &operator=(const Wizard &wizard) = default;
+
+    ~Wizard() = default override;
+
+    Wizard(const Wizard &wizard) = default;
+
+    Wizard &operator=(const Wizard &wizard) = default;
 
     void heal(int pointsToHeal) override;
+
     void printInfo() const override;
-    Wizard* clone() const override;
+    
+    std::unique_ptr<Wizard> clone() const override;
 };
 #endif //MTM_HW4_WIZARD_H

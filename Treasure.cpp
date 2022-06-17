@@ -1,16 +1,17 @@
 #include "Treasure.h"
 
-void Treasure::applyEncounter(Player &player) const {
-    //check with michal seif 3.7
-    //magic  number
+Treasure::Treasure() : Card("Treasure") {}
+
+void Treasure::applyEncounter(Player &player) const 
+{
     player.addCoins(10);
     printTreasureMessage();
 }
 
-void printInfo() const {
+void Treasure::printInfo() const {
     printCardDetails(std::cout,"Treasure");
 }
 
-Treasure *clone() const {
-    return new Treasure(m_name);
+std::unique_ptr<Treasure> Treasure::clone() const {
+    return std::unique_ptr<Treasure>(new Treasure(m_name));
 }

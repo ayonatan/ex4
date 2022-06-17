@@ -7,18 +7,20 @@ void Goblin::applyEncounter(Player &player) const {
         player.addCoins(m_loot);
         player.levelUp();
 
-        ///  printBattleResult(true);
-    } else {
+        printWinBattle(player.getName(),"Goblin");
+    } 
+    else 
+    {
         player.damage(m_damage);
-        ///  printBattleResult(false);
+        printLossBattle(player.getName(),"Goblin");
     }
 }
 
 
-void printInfo() const {
+void Goblin::printInfo() const {
     printMonsterDetails(std, m_force, m_damage, m_loot, false);
 }
 
-Goblin *clone() const {
-    return new Goblin(m_name);
+std::unique_ptr<Goblin> Goblin::clone() const {
+    return std::unique_ptr<Goblin>(new Goblin(m_name));
 }

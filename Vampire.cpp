@@ -1,32 +1,26 @@
-//
-// Created by yonat on 06/06/2022.
-//
 
-#include "Wizard.h"
+#include "Vampire.h"
 
-Wizard::Wizard(std::string name): Player(name){}
+Vampire::Vampire() : Card("Vampire"), m_force(10), m_loot(2), m_damage(10) {}
 
-void Wizard::heal(int pointsToHeal)
-{
-    if (pointsToHeal > 0) 
+
+void Vampire::applyEncounter(Player &player) const {
+    if (player.getAttackStrength() >= m_force) {
+        player.addCoins(m_loot);
+        player.levelUp();
+        printWinBattle(player.getName(), "Vampire");
+    } 
+    else 
     {
-        if (m_HP + pointsToHeal < MAX_HP) 
-        {
-            m_HP += pointsToHeal;
-        } 
-        else
-        {
-            m_HP = m_maxHP;
-        }
+        player.damage(m_damage);
+        printLossBattle(player.getName(), "Vampire");
     }
 }
 
-void printInfo() const
-{
-    printPlayerDetails(os, m_name, "Wizard", m_level, m_force, m_HP, m_coins);
+void Vampire::printInfo() const {
+    printMonsterDetails(std, m_force, m_damage, m_loot, false);
 }
 
-Wizard* clone() const
-{
-    return new Wizard(m_name);
+std::unique_ptr<Vampire> Vampire::clone() const {
+    return std::unique_ptr<Vampire>(new Vampire(m_name));
 }

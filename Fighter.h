@@ -7,15 +7,17 @@ class Fighter : public Player {
 public:
     Fighter(std::string name);
 
-    ~Fighter() override = default;
+    ~Fighter() = default override;
 
-    Fighter(const Fighter &fighter) = delete;
+    Fighter(const Fighter &fighter) = default;
+
+    Fighter &operator=(const Fighter &fighter) = default; 
 
     int getAttackStrength() const override;
 
     void printInfo() const override;
 
-    Fighter *clone() const override;
+    virtual std::unique_ptr<Fighter> clone() const override;
 };
 
 #endif //MTM_HW4_FIGHTER_H

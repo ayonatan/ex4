@@ -1,29 +1,26 @@
-#ifndef MTM_HW4_DRAGON_H
-#define MTM_HW4_DRAGON_H
+#include "Dragon.h"
 
-#include "Card.h"
+Dragon::Dragon() : Card("Dragon"), m_force(25), m_loot(1000), m_damage(100) {}
 
-class Dragon : public Card {
-public:
-    Dragon();
+void printInfo() const {
+    printMonsterDetails(std, m_force, m_damage, m_loot, true);
+}
 
-    Dragon(const Dragon &dragon) = default;
+void Dragon::applyEncounter(Player &player) const 
+{
+    if (player.getAttackStrength() >= m_force) 
+    {
+        player.addCoins(m_loot);
+        player.levelUp();
+        printWinBattle(player.getName(), "Dragon");
+    } 
+    else 
+    {
+        player.damage(m_damage);
+        printLossBattle(player.getName(), "Dragon");
+    }
+}
 
-    ~Dragon() override = default;
-
-    Dragon &operator=(const Dragon &dragon) = default;
-
-    void printInfo() const override;
-
-    Dragon *clone() const override;
-
-    void applyEncounter(Player &player) const override;
-
-
-///private: add?
-private:
-    int m_force;
-    int m_loot;
-    int m_damage;
-
-#endif //MTM_HW4_DRAGON_H
+std::unique_ptr<Dragon> clone() const {
+    return std::unique_ptr<Dragon>(new Dragon(m_name));
+}

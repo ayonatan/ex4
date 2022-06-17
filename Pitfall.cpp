@@ -1,11 +1,8 @@
 #include "Pitfall.h"
 
-PitFall::PitFall()
-{
-    m_cardName = "BarFight";
-}
+Pitfall::Pitfall() : Card("Pitfall"){}
 
-void PitFall::applyEncounter(Player &player) const {
+void Pitfall::applyEncounter(Player &player) const {
     const Rouge *rouge = dynamic_cast<const Rouge *>(player);
     if (rouge == nullptr) {
         printPitfallMessage(false);
@@ -14,10 +11,10 @@ void PitFall::applyEncounter(Player &player) const {
     printPitfallMessage(true);
 }
 
-void printInfo() const {
-    printCardDetails(std::cout,"PitFall");
+void Pitfall::printInfo() const {
+    printCardDetails(std::cout,"Pitfall");
 }
 
-PitFall *clone() const {
-    return new PitFall(m_name);
+std::unique_ptr<Pitfall> Pitfall::clone() const {
+    return std::unique_ptr<Pitfall>(new Pitfall(m_name));
 }

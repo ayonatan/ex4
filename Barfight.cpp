@@ -1,24 +1,25 @@
 #include "Barfight.h"
 
-Barfight::Barfight()
-{
-    m_cardName = "BarFight";
-}
+Barfight::Barfight() : Card("BarFight"){}
 
-void Barfight::applyEncounter(Player &player) const {
+void Barfight::applyEncounter(Player &player) const 
+{
     const Fighter *fighter = dynamic_cast<const Fighter *>(player);
-    if (fighter == nullptr) {
+    if (fighter == nullptr) 
+    {
         printBarfightMessage(false);
         player.damage(-10);
-    } else {
+    } 
+    else
+    {
         printBarfightMessage(true);
     }
 }
 
-void printInfo() const {
+void BarFight::printInfo() const {
     printCardDetails(std::cout,"Barfight");
 }
 
-Barfight *clone() const {
-    return new Barfight(m_name);
+std::unique_ptr<BarFight> Barfight::clone() const {
+    return std::unique_ptr<BarFight>(new Barfight(m_name));
 }

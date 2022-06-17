@@ -23,7 +23,7 @@ void Rouge::printInfo() const
     printPlayerDetails(os, m_name, "Rouge", m_level, m_force, m_HP, m_coins);
 }
 
-Rouge* clone() const
+std::unique_ptr<Rouge> Rouge::clone() const
 {
-    return new Rouge(m_name);
+    return std::unique_ptr<Rouge>(new Rouge(m_name));
 }

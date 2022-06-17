@@ -1,33 +1,66 @@
 #include "Merchant.h"
 
-Merchant::Merchant()
-{
-    m_cardName = "Merchant";
-}
+Merchant::Merchant() : Card("Merchant"){}
 
-void Merchant::applyEncounter(Player &player) const {
-    // bool flag = true;
+void Merchant::applyEncounter(Player &player) const 
+{
     int payIndex;
-    while (true) {
-        printMerchantInitialMessageForInteractiveEncounter(std, player.getName(), player.getCoins());
-        // can we use magic numbers
-        std::cin >> payIndex;
-        if (payIndex != 0 && payIndex != 1 && payIndex != 2) {
+    std::string inputLine;
+    printMerchantInitialMessageForInteractiveEncounter(std::cout, player.getName(), player.getCoins());
+    while (true) 
+    {
+        std::getline(std::cin, inputLine);
+        try
+        {
+            payIndex = std::stoi(inputLine);
+        }
+        catch(const std::invalid_argument& e)
+        {
             printInvalidInput();
             continue;
         }
-        if (!player.pay()) {
-            return;
-            printMerchantSummary(std, player.getName(), player.getCoins());
+        
+        if (payIndex != DONT_BUY && payIndex != BUY_HP && payIndex != BUY_FORCE) 
+        {
+            printInvalidInput();
+            continue;
         }
+        break;
     }
-    printMerchantSummary(std, player.getName(), player.getCoins());
+
+    if(payIndex == BUY_HP)
+    {
+        if(player.pay(5))
+        {
+            printMerchantSummary(std::cout, player.getName(), payIndex, 5);
+        }
+        else
+        {
+            printMerchantInsufficientCoins(std::cout);
+        }
+        return;
+    }
+
+    if(payIndex == BUY_FORCE)
+    {
+        if(player.pay(10))
+        {
+            printMerchantSummary(std::cout, player.getName(), payIndex, 10);
+        }
+        else
+        {
+            printMerchantInsufficientCoins(std::cout);
+        }
+        return;
+    }
+    
+    printMerchantSummary(std::cout, player.getName(), payIndex, 0);
 }
 
-void printInfo() const {
+void Merchant::printInfo() const {
     printCardDetails(std::cout, "Merchant");
 }
 
-Merchant *clone() const {
-    return new Merchant(m_name);
+std::unique_ptr<Merchant> Merchant::clone() const {
+    return std::unique_ptr<Merchant>(new Merchant(m_name));
 }

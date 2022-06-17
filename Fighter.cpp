@@ -14,6 +14,6 @@ void Fighter::printInfo() const {
     printPlayerDetails(os, m_name, "Fighter", m_level, m_force, m_HP, m_coins);
 }
 
-Fighter *Fighter::clone() const {
-    return new Fighter(m_name);
+std::unique_ptr<Fighter> Fighter::clone() const {
+    return std::unique_ptr<Fighter>(new Fighter(m_name));
 }
