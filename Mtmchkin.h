@@ -22,7 +22,6 @@ class Mtmchkin {
     deque<unique_ptr<Card>> m_cardsDeck;
     deque<unique_ptr<Player>> m_currentPlayersQueue;
 public:
-
     /*
     * C'tor of Mtmchkin class
     *
@@ -64,6 +63,10 @@ public:
     *          int - number of rounds played
     */
     int getNumberOfRounds() const;
+
+    Mtmchkin(const Mtmchkin& mtmchkin) = delete;
+    Mtmchkin& operator=(const Mtmchkin& mtmchkin) = delete;
+    ~Mtmchkin() = default;
 };
 
 
