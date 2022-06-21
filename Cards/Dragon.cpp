@@ -4,6 +4,7 @@
 Dragon::Dragon() : Card("Dragon"), m_force(25), m_loot(1000), m_damage(100) {}
 
 void Dragon::printInfo() const {
+    printCardDetails(std::cout,"Dragon");
     printMonsterDetails(std::cout, m_force, m_damage, m_loot, true);
 }
 
