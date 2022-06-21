@@ -1,6 +1,6 @@
 #include "Pitfall.h"
+#include "../Players/Rogue.h"
 #include "../utilities.h"
-#include "../Players/Rouge.h"
 
 Pitfall::Pitfall() : Card("Pitfall"){}
 

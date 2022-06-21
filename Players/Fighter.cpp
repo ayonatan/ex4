@@ -5,6 +5,7 @@
 #include "Fighter.h"
 #include "../utilities.h"
 
+
 Fighter::Fighter(std::string name) : Player(name) {}
 
 int Fighter::getAttackStrength() const 

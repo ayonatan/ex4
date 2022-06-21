@@ -22,6 +22,9 @@ public:
 
     virtual std::unique_ptr<Card> clone() const = 0;
 
+    friend std::ostream& operator<<(std::ostream& os, const Card &card);
+
+
 protected:
     std::string m_cardName;
 };

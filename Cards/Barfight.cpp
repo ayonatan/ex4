@@ -1,6 +1,7 @@
 #include "Barfight.h"
-#include "../utilities.h"
 #include "../Players/Fighter.h"
+#include "../utilities.h"
+
 Barfight::Barfight() : Card("Barfight"){}
 
 void Barfight::applyEncounter(Player &player) const 

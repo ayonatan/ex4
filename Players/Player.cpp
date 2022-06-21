@@ -1,5 +1,4 @@
 #include "Player.h"
-#include "../utilities.h"
 
 Player::Player(std::string name) :
         m_name(name),

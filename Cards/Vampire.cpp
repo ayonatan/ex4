@@ -1,7 +1,5 @@
-
 #include "Vampire.h"
 #include "../utilities.h"
-
 
 Vampire::Vampire() : Card("Vampire"), m_force(10), m_loot(2), m_damage(10) {}
 

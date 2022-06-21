@@ -1,5 +1,5 @@
-#ifndef MTMCHKIN_H_
-#define MTMCHKIN_H_
+#ifndef MTM_HW4_MTMCHKIN_H
+#define MTM_HW4_MTMCHKIN_H
 
 #include "Cards/Barfight.h"
 #include "Cards/Dragon.h"
@@ -10,13 +10,12 @@
 #include "Cards/Treasure.h"
 #include "Cards/Vampire.h"
 
-#include "Players/Rouge.h"
+#include "Players/Rogue.h"
 #include "Players/Wizard.h"
 #include "Players/Fighter.h"
-#include "utilities.h"
 #include <fstream>
 #include <deque>
-#include "Exception.h"
+#include "utilities.h"
 using std::ifstream;
 using std::ofstream;
 using std::cerr;
@@ -45,7 +44,6 @@ public:
     *      A new instance of Mtmchkin.
     */
     Mtmchkin(const std::string fileName);
-
     /*
     * Play the next Round of the game - according to the instruction in the exercise document.
     *

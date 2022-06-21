@@ -1,30 +1,25 @@
 #include "Mtmchkin.h"
-bool static isNameValid(const std::string playerName)
-{
+
+bool static isNameValid(const std::string playerName) {
     int length = playerName.size();
-    if (length > MAX_NAME_SIZE)
-    {
+    if (length > MAX_NAME_SIZE) {
         return false;
     }
-    for (int i = 0; i < length; i++)
-    {
-        if (!((playerName.at(i) >= 'a' && playerName.at(i) <= 'z')|| (playerName.at(i) >= 'A' && playerName.at(i) <= 'Z')))
-        {
+    for (int i = 0; i < length; i++) {
+        if (!((playerName.at(i) >= 'a' && playerName.at(i) <= 'z') || (playerName.at(i) >= 'A' && playerName.at(i) <= 'Z'))) {
             return false;
         }
     }
     return true;
 }
-void static initializePlayers(deque<unique_ptr<Player>>& currentPlayersQueue) 
-{
+
+void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
     printEnterTeamSizeMessage();
     std::string teamSize;
     int teamSizeInt;
     std::cin >> teamSize;
-    do 
-    {
-        try 
-        {
+    do {
+        try {
             std::stoi(teamSize, nullptr, 10);
         }
         catch (std::invalid_argument &e) {
@@ -32,8 +27,7 @@ void static initializePlayers(deque<unique_ptr<Player>>& currentPlayersQueue)
             continue;
         }
         teamSizeInt = std::stoi(teamSize, nullptr, 10);
-        if (teamSizeInt > MAX_TEAM_SIZE || teamSizeInt < MIN_TEAM_SIZE) 
-        {
+        if (teamSizeInt > MAX_TEAM_SIZE || teamSizeInt < MIN_TEAM_SIZE) {
             printInvalidInput();
             continue;
         }
@@ -42,112 +36,86 @@ void static initializePlayers(deque<unique_ptr<Player>>& currentPlayersQueue)
 ////////////////////////
     std::string playerName, playerClass;
     bool isCorrectFormat = false;
-    for (int i = 0; i < teamSizeInt; i++) 
-    {
+    for (int i = 0; i < teamSizeInt; i++) {
         printInsertPlayerMessage();
-        while (!isCorrectFormat)
-        {
+        while (!isCorrectFormat) {
             std::cin >> playerName;
-            if (!isNameValid(playerName))
-            {
+            if (!isNameValid(playerName)) {
                 printInvalidName();
-            }
-            else
-            {
+            } else {
                 isCorrectFormat = true;
             }
         }
         isCorrectFormat = false;
-        while (!isCorrectFormat)
-        {
+        while (!isCorrectFormat) {
             std::cin >> playerClass;
-            switch (playerClass) 
-            {
-                case "Wizard":
-                    currentPlayersQueue.push_back(unique_ptr<Wizard>(new Wizard(playerName)));
-                    isCorrectFormat = true;
-                    break;
-                case "Fighter":
-                    currentPlayersQueue.push_back(unique_ptr<Fighter>(new Fighter(playerName)));
-                    isCorrectFormat = true;
-                    break;
-                case "Rouge":
-                    currentPlayersQueue.push_back(unique_ptr<Rouge>(new Rouge(playerName)));
-                    isCorrectFormat = true;
-                    break;
-            }
-            if (!isCorrectFormat)
-            {
+            if (playerClass == "Wizard") {
+                currentPlayersQueue.push_back(unique_ptr<Wizard>(new Wizard(playerName)));
+                isCorrectFormat = true;
+            } else if (playerClass == "Fighter") {
+                currentPlayersQueue.push_back(unique_ptr<Fighter>(new Fighter(playerName)));
+                isCorrectFormat = true;
+            } else if (playerClass == "Rouge") {
+                currentPlayersQueue.push_back(unique_ptr<Rouge>(new Rouge(playerName)));
+                isCorrectFormat = true;
+            } else {
                 printInvalidClass();
             }
-        } 
+        }
     }
 }
+
 Mtmchkin::Mtmchkin(const std::string fileName) : m_numOfRounds(0)
 {
     ifstream source(fileName);
-    if (!source)
-    {
+    if (!source) {
         throw DeckFileNotFound();
     }
     int numLine = 0;
-    bool isCorrectFormat = false;
+    // bool isCorrectFormat = false;
     std::string cardName;
-    while (std::getline(source, cardName)) 
-    {
+    while (std::getline(source, cardName)) {
         numLine++;
-        switch (cardName) {
-            case "Fairy":
-                m_cardsDeck.push_back(unique_ptr<Fairy>(new Fairy()));
-                isCorrectFormat = true;
-                break;
-            case "Goblin":
-                m_cardsDeck.push_back(unique_ptr<Goblin>(new Goblin()));
-                isCorrectFormat = true;
-                break;
-            case "Vampire":
-                m_cardsDeck.push_back(unique_ptr<Vampire>(new Vampire()));
-                isCorrectFormat = true;
-                break;
-            case "BarFight":
-                m_cardsDeck.push_back(unique_ptr<Barfight>(new Barfight()));
-                isCorrectFormat = true;
-                break;
-            case "Dragon":
-                m_cardsDeck.push_back(unique_ptr<Dragon>(new Dragon()));
-                isCorrectFormat = true;
-                break;
-            case "Treasure":
-                m_cardsDeck.push_back(unique_ptr<Treasure>(new Treasure()));
-                isCorrectFormat = true;
-                break;
-            case "Merchant":
-                m_cardsDeck.push_back(unique_ptr<Merchant>(new Merchant()));
-                isCorrectFormat = true;
-                break;
-        }
-        if(!isCorrectFormat)
-        {
+        if (cardName == "Fairy") {
+            m_cardsDeck.push_back(unique_ptr<Fairy>(new Fairy()));
+            // isCorrectFormat = true;
+        }else if (cardName == "Goblin") {
+            m_cardsDeck.push_back(unique_ptr<Goblin>(new Goblin()));
+            //   isCorrectFormat = true;
+        }else if (cardName == "Vampire") {
+            m_cardsDeck.push_back(unique_ptr<Vampire>(new Vampire()));
+            // isCorrectFormat = true;
+        }else if (cardName == "BarFight") {
+            m_cardsDeck.push_back(unique_ptr<Barfight>(new Barfight()));
+            //  isCorrectFormat = true;
+        }else if (cardName == "Dragon") {
+            m_cardsDeck.push_back(unique_ptr<Dragon>(new Dragon()));
+            // isCorrectFormat = true;
+        }else if (cardName == "Treasure") {
+            m_cardsDeck.push_back(unique_ptr<Treasure>(new Treasure()));
+            //  isCorrectFormat = true;
+        }else if (cardName == "Merchant") {
+            m_cardsDeck.push_back(unique_ptr<Merchant>(new Merchant()));
+            //isCorrectFormat = true;
+        } else{
             throw DeckFileFormatError(numLine);
         }
-        else
-        {
-            isCorrectFormat = false;
-        }
+        /* if (!isCorrectFormat) {
+             throw DeckFileFormatError(numLine);
+         } else {
+             isCorrectFormat = false;
+         }*/
     }
-    if(m_cardsDeck.size() < 5)
-    {
+    if (m_cardsDeck.size() < 5) {
         throw DeckFileInvalidSize();
     }
     initializePlayers(m_currentPlayersQueue);
 }
 
-void Mtmchkin::playRound() 
-{
+void Mtmchkin::playRound() {
     int queueSize = m_currentPlayersQueue.size();
     printRoundStartMessage(m_numOfRounds + 1);
-    for (int i = 0; i < queueSize; i++)
-    {
+    for (int i = 0; i < queueSize; i++) {
         printTurnStartMessage(m_currentPlayersQueue.front()->getName());
         unique_ptr<Card> currentCard = m_cardsDeck.front()->clone();
         unique_ptr<Player> currentPlayer = m_currentPlayersQueue.front()->clone();
@@ -155,20 +123,14 @@ void Mtmchkin::playRound()
         m_currentPlayersQueue.pop_front();
         currentCard->applyEncounter(*currentPlayer);
         m_cardsDeck.push_back(std::move(currentCard));
-        if(currentPlayer->getLevel() == 10)
-        {
+        if (currentPlayer->getLevel() == 10) {
             m_winnersDeck.push_back(std::move(currentPlayer));
-        }
-        else if (currentPlayer->getHP() == 0)
-        {
+        } else if (currentPlayer->getHP() == 0) {
             m_losersDeck.push_back(std::move(currentPlayer));
-        }
-        else
-        {
+        } else {
             m_currentPlayersQueue.push_back(std::move(currentPlayer));
         }
-        if(this->isGameOver())
-        {
+        if (this->isGameOver()) {
             printGameEndMessage();
             return;
         }
@@ -176,30 +138,24 @@ void Mtmchkin::playRound()
     m_numOfRounds++;
 }
 
-void Mtmchkin::printLeaderBoard() const
-{
+void Mtmchkin::printLeaderBoard() const {
     printLeaderBoardStartMessage();
     int rank = 0;
-    for(const unique_ptr<Player>& player : m_winnersDeck)
-    {
-        printPlayerLeaderBoard(++rank,*player);
-    }   
-    for(const unique_ptr<Player>& player : m_currentPlayersQueue)
-    {
-        printPlayerLeaderBoard(++rank,*player);
-    } 
-    for(const unique_ptr<Player>& player : m_losersDeck)
-    {
-        printPlayerLeaderBoard(++rank,*player);
+    for (const unique_ptr<Player> &player: m_winnersDeck) {
+        printPlayerLeaderBoard(++rank, *player);
+    }
+    for (const unique_ptr<Player> &player: m_currentPlayersQueue) {
+        printPlayerLeaderBoard(++rank, *player);
+    }
+    for (const unique_ptr<Player> &player: m_losersDeck) {
+        printPlayerLeaderBoard(++rank, *player);
     }
 }
 
-bool Mtmchkin::isGameOver() const
-{
+bool Mtmchkin::isGameOver() const {
     return m_currentPlayersQueue.empty();
 }
 
-int Mtmchkin::getNumberOfRounds() const
-{
+int Mtmchkin::getNumberOfRounds() const {
     return m_numOfRounds;
 }
