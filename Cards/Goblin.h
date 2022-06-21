@@ -7,7 +7,7 @@ class Goblin : public Card {
 public:
     Goblin();
 
-    ~Goblin() = default override;
+    ~Goblin()override = default ;
 
     Goblin &operator=(const Goblin &goblin) = default;
 
@@ -17,7 +17,7 @@ public:
 
     void printInfo() const override;
     
-    Goblin *clone() const override;
+    std::unique_ptr<Card> clone() const override;
 
 private:
     int m_force;

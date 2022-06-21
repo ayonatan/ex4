@@ -1,4 +1,5 @@
 #include "Merchant.h"
+#include "../utilities.h"
 
 Merchant::Merchant() : Card("Merchant"){}
 
@@ -61,6 +62,6 @@ void Merchant::printInfo() const {
     printCardDetails(std::cout, "Merchant");
 }
 
-std::unique_ptr<Merchant> Merchant::clone() const {
-    return std::unique_ptr<Merchant>(new Merchant(m_name));
+std::unique_ptr<Card> Merchant::clone() const {
+    return std::unique_ptr<Merchant>(new Merchant());
 }

@@ -6,7 +6,7 @@ class Pitfall : public Card{
 public:
     Pitfall();
 
-    ~Pitfall() = default override;
+    ~Pitfall()override = default ;
 
     Pitfall(const Pitfall& pitfall) = default;
 
@@ -16,6 +16,6 @@ public:
 
     void printInfo() const override;
 
-    std::unique_ptr<Pitfall> clone() const override;
+    std::unique_ptr<Card> clone() const override;
 };
 #endif //MTM_HW4_PITFALL_H

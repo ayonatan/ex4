@@ -1,10 +1,10 @@
 #ifndef MTM_HW2_CARD_H
 #define MTM_HW2_CARD_H
 
-#include "utilities.h"
 #include <string>
 #include <ostream>
 #include <memory>
+#include "../Players/Player.h"
 
 class Card {
 public:

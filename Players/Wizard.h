@@ -11,7 +11,7 @@ class Wizard : public Player
 public:
     Wizard(std::string name);
 
-    ~Wizard() = default override;
+    ~Wizard()override = default ;
 
     Wizard(const Wizard &wizard) = default;
 
@@ -21,6 +21,6 @@ public:
 
     void printInfo() const override;
     
-    std::unique_ptr<Wizard> clone() const override;
+    std::unique_ptr<Player> clone() const override;
 };
 #endif //MTM_HW4_WIZARD_H

@@ -1,13 +1,13 @@
 #ifndef MTM_HW4_VAMPIRE_H
 #define MTM_HW4_VAMPIRE_H
 
-#include "Player.h"
+#include "Card.h"
 
-class Vampire : public Player {
+class Vampire : public Card {
 public:
     Vampire();
 
-    ~Vampire() = default override;
+    ~Vampire() override = default ;
 
     Vampire(const Vampire &vampire) = default;
 
@@ -17,6 +17,11 @@ public:
 
     void printInfo() const override;
 
-    Vampire *clone() const override;
-}
+    std::unique_ptr<Card> clone() const override;
+
+private:
+    int m_force;
+    int m_loot;
+    int m_damage;
+};
 #endif //MTM_HW4_VAMPIRE_H

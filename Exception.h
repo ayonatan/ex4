@@ -14,10 +14,10 @@ class DeckFileNotFound : public std::exception
 
 class DeckFileFormatError : public std::exception
 {
-    //private:
-    //    int m_numOfLine;
+    private:
+        int m_numOfLine;
     public:
-        DeckFileFormatError()=default; /*: m_numOfLine(){}*/
+        DeckFileFormatError(int numOfLine) : m_numOfLine(numOfLine) {}
         ~DeckFileFormatError() = default;
         const char* what() const noexcept override
         {

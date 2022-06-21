@@ -1,4 +1,5 @@
 #include "Goblin.h"
+#include "../utilities.h"
 
 Goblin::Goblin() : Card("Goblin"), m_force(6), m_loot(2), m_damage(10) {}
 
@@ -18,9 +19,9 @@ void Goblin::applyEncounter(Player &player) const {
 
 
 void Goblin::printInfo() const {
-    printMonsterDetails(std, m_force, m_damage, m_loot, false);
+    printMonsterDetails(std::cout, m_force, m_damage, m_loot, false);
 }
 
-std::unique_ptr<Goblin> Goblin::clone() const {
-    return std::unique_ptr<Goblin>(new Goblin(m_name));
+std::unique_ptr<Card> Goblin::clone() const {
+    return std::unique_ptr<Goblin>(new Goblin(*this));
 }

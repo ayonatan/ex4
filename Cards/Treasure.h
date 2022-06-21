@@ -7,7 +7,7 @@ class Treasure : public Card {
 public:
     Treasure();
 
-    ~Treasure() = default override;
+    ~Treasure()override = default ;
 
     Treasure(const Treasure& treasure) = default;
 
@@ -17,7 +17,7 @@ public:
 
     void printInfo() const override;
     
-    std::unique_ptr<Treasure> clone() const override;
+    std::unique_ptr<Card> clone() const override;
 
 };
 

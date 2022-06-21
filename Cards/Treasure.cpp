@@ -1,4 +1,5 @@
 #include "Treasure.h"
+#include "../utilities.h"
 
 Treasure::Treasure() : Card("Treasure") {}
 
@@ -12,6 +13,6 @@ void Treasure::printInfo() const {
     printCardDetails(std::cout,"Treasure");
 }
 
-std::unique_ptr<Treasure> Treasure::clone() const {
-    return std::unique_ptr<Treasure>(new Treasure(m_name));
+std::unique_ptr<Card> Treasure::clone() const {
+    return std::unique_ptr<Treasure>(new Treasure());
 }

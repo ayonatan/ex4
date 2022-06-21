@@ -2,7 +2,6 @@
 #define MTM_HW4_PLAYER_H
 
 #include<string>
-#include "utilities.h"
 #include <memory>
 
 const int INITIAL_FORCE = 5;
@@ -30,11 +29,15 @@ public:
 
     virtual void printInfo() const = 0;
 
-    friend std::ostream& operator<<(std::ostream& os, const Player &player)const;
+    friend std::ostream& operator<<(std::ostream& os, const Player &player);
 
     void levelUp();
 
     int getLevel() const;
+
+    int getHP() const;
+
+    int getCoins() const;
 
     /*
     *  add points to the player's force

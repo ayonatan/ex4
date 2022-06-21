@@ -3,6 +3,8 @@
 //
 
 #include "Wizard.h"
+#include "../utilities.h"
+
 
 Wizard::Wizard(std::string name) : Player(name) {}
 
@@ -16,17 +18,17 @@ void Wizard::heal(int pointsToHeal)
         } 
         else
         {
-            m_HP = m_maxHP;
+            m_HP = MAX_HP;
         }
     }
 }
 
 void Wizard::printInfo() const
 {
-    printPlayerDetails(os, m_name, "Wizard", m_level, m_force, m_HP, m_coins);
+    printPlayerDetails(std::cout, m_name, "Wizard", m_level, m_force, m_HP, m_coins);
 }
 
-std::unique_ptr<Wizard> Wizard::clone() const
+std::unique_ptr<Player> Wizard::clone() const
 {
-    return std::unique_ptr<Wizard>(new Wizard(m_name));
+    return std::unique_ptr<Wizard>(new Wizard(*this));
 }

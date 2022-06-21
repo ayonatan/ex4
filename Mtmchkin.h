@@ -1,12 +1,22 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
 
-#include "Player.h"
-#include "Card.h"
+#include "Cards/Barfight.h"
+#include "Cards/Dragon.h"
+#include "Cards/Fairy.h"
+#include "Cards/Goblin.h"
+#include "Cards/Merchant.h"
+#include "Cards/Pitfall.h"
+#include "Cards/Treasure.h"
+#include "Cards/Vampire.h"
+
+#include "Players/Rouge.h"
+#include "Players/Wizard.h"
+#include "Players/Fighter.h"
+#include "utilities.h"
 #include <fstream>
 #include <deque>
-#include <memory>
-
+#include "Exception.h"
 using std::ifstream;
 using std::ofstream;
 using std::cerr;
@@ -14,13 +24,18 @@ using std::endl;
 using std::deque;
 using std::unique_ptr;
 
-
+const int MAX_TEAM_SIZE = 6;
+const int MIN_TEAM_SIZE = 2;
+const int MAX_NAME_SIZE = 15;
 class Mtmchkin {
-    int m_numberOfRounds;
+private:
+    int m_numOfRounds;
     deque<unique_ptr<Player>> m_winnersDeck;
     deque<unique_ptr<Player>> m_losersDeck;
     deque<unique_ptr<Card>> m_cardsDeck;
     deque<unique_ptr<Player>> m_currentPlayersQueue;
+    
+    
 public:
     /*
     * C'tor of Mtmchkin class

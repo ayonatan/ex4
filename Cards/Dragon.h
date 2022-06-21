@@ -7,7 +7,7 @@ class Dragon : public Card {
 public:
     Dragon();
 
-    ~Dragon() = default override;
+    ~Dragon()override = default ;
     
     Dragon(const Dragon &dragon) = default;
 
@@ -15,7 +15,7 @@ public:
 
     void printInfo() const override;
 
-    std::unique_ptr<Dragon> clone() const override;
+    std::unique_ptr<Card> clone() const override;
 
     void applyEncounter(Player &player) const override;
 

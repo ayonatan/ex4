@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "../utilities.h"
 
 Player::Player(std::string name) :
         m_name(name),
@@ -7,9 +8,10 @@ Player::Player(std::string name) :
         m_HP(MAX_HP),
         m_coins(INITIAL_COINS) {}
 
-std::ostream& operator<<(std::ostream& os, const Player &player)const
+std::ostream& operator<<(std::ostream& os, const Player &player)
 {
     player.printInfo();
+    return os;
 }
 
 void Player::levelUp()
@@ -20,9 +22,19 @@ void Player::levelUp()
     }
 }
 
-int Player::getLevel()const
+int Player::getLevel() const
 {
     return m_level;
+}
+
+int Player::getHP() const
+{
+    return m_HP;
+}
+
+int Player::getCoins() const
+{
+    return m_coins;
 }
 
 void Player::buff(int pointsToAdd)
@@ -36,10 +48,10 @@ void Player::buff(int pointsToAdd)
 void Player::heal(int pointsToHeal)
 {
     if (pointsToHeal > 0) {
-        if (m_HP + pointsToHeal < m_maxHP) {
+        if (m_HP + pointsToHeal < MAX_HP) {
             m_HP += pointsToHeal;
         } else {
-            m_HP = m_maxHP;
+            m_HP = MAX_HP;
         }
     }
 }
@@ -75,8 +87,10 @@ void Player::addCoins(int coinsToAdd)
 
 bool Player::pay(int coinsToPay)
 {
-    if (coinsToPay > 0) {
-        if (m_coins - coinsToPay < 0) {
+    if (coinsToPay > 0) 
+    {
+        if (m_coins - coinsToPay < 0) 
+        {
             return false;
         }
         m_coins -= coinsToPay;

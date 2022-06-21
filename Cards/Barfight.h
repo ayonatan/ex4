@@ -7,15 +7,15 @@ class Barfight : public Card {
 public:
     Barfight();
 
-    ~Barfight() = default override;
+    ~Barfight()override = default ;
 
     Barfight &operator=(const Barfight &barFight) = default; 
 
-    Barfight(const BarFight& barFight) = default;
+    Barfight(const Barfight& barFight) = default;
 
     void printInfo() const override;
     
-    std::unique_ptr<BarFight> clone() const override;
+    std::unique_ptr<Card> clone() const override;
 
     void applyEncounter(Player &player) const override;
 };

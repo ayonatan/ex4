@@ -3,15 +3,15 @@
 
 #include "Card.h"
 
-const DONT_BUY = 0;
-const BUY_HP = 1
-const BUY_FORCE = 2;
+const int DONT_BUY = 0;
+const int BUY_HP = 1;
+const int BUY_FORCE = 2;
 
 class Merchant : public Card {
 public:
     Merchant();
 
-    ~Merchant() = default override;
+    ~Merchant()override = default ;
 
     Merchant(const Merchant& merchant) = default;
 
@@ -21,7 +21,7 @@ public:
     
     void printInfo() const override;
 
-    Merchant *clone() const override;
+    std::unique_ptr<Card> clone() const override;
 
 };
 
