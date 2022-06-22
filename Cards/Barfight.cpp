@@ -10,7 +10,7 @@ void Barfight::applyEncounter(Player &player) const
     if (fighter == nullptr) 
     {
         printBarfightMessage(false);
-        player.damage(-10);
+        player.damage(10);
     } 
     else
     {

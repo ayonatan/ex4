@@ -77,45 +77,54 @@ Mtmchkin::Mtmchkin(const std::string fileName) : m_numOfRounds(0)
 {
     printStartGameMessage();
     ifstream source(fileName);
-    if (!source) {
+    if (!source) 
+    {
         throw DeckFileNotFound();
     }
     int numLine = 0;
-    // bool isCorrectFormat = false;
     std::string cardName;
-    while (std::getline(source, cardName)) {
+    while (std::getline(source, cardName)) 
+    {
         numLine++;
-        if (cardName == "Fairy") {
+        if (cardName == "Fairy") 
+        {
             m_cardsDeck.push_back(unique_ptr<Fairy>(new Fairy()));
-            // isCorrectFormat = true;
-        }else if (cardName == "Goblin") {
+        }
+        else if (cardName == "Goblin") 
+        {
             m_cardsDeck.push_back(unique_ptr<Goblin>(new Goblin()));
-            //   isCorrectFormat = true;
-        }else if (cardName == "Vampire") {
+        }
+        else if (cardName == "Vampire") 
+        {
             m_cardsDeck.push_back(unique_ptr<Vampire>(new Vampire()));
-            // isCorrectFormat = true;
-        }else if (cardName == "BarFight") {
+        }
+        else if (cardName == "Barfight") 
+        {
             m_cardsDeck.push_back(unique_ptr<Barfight>(new Barfight()));
-            //  isCorrectFormat = true;
-        }else if (cardName == "Dragon") {
+        }
+        else if (cardName == "Dragon")
+        {
             m_cardsDeck.push_back(unique_ptr<Dragon>(new Dragon()));
-            // isCorrectFormat = true;
-        }else if (cardName == "Treasure") {
+        }
+        else if (cardName == "Treasure") 
+        {
             m_cardsDeck.push_back(unique_ptr<Treasure>(new Treasure()));
-            //  isCorrectFormat = true;
-        }else if (cardName == "Merchant") {
+        }
+        else if (cardName == "Merchant") 
+        {
             m_cardsDeck.push_back(unique_ptr<Merchant>(new Merchant()));
-            //isCorrectFormat = true;
-        } else{
+        } 
+        else if (cardName == "Pitfall") 
+        {
+            m_cardsDeck.push_back(unique_ptr<Pitfall>(new Pitfall()));
+        }
+        else
+        {
             throw DeckFileFormatError(numLine);
         }
-        /* if (!isCorrectFormat) {
-             throw DeckFileFormatError(numLine);
-         } else {
-             isCorrectFormat = false;
-         }*/
     }
-    if (m_cardsDeck.size() < 5) {
+    if (m_cardsDeck.size() < 5) 
+    {
         throw DeckFileInvalidSize();
     }
     initializePlayers(m_currentPlayersQueue);

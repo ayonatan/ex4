@@ -9,6 +9,7 @@ void Fairy::applyEncounter(Player &player) const {
     if (wizard != nullptr) {
         printFairyMessage(true);
         player.heal(10);
+        return;
     }
     printFairyMessage(false);
 }

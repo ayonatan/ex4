@@ -14,7 +14,7 @@ void Wizard::heal(int pointsToHeal)
     {
         if (m_HP + pointsToHeal < MAX_HP) 
         {
-            m_HP += pointsToHeal;
+            m_HP += 2*pointsToHeal;
         } 
         else
         {
