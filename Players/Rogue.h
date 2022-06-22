@@ -7,15 +7,15 @@
 
 #include "Player.h"
 
-class Rouge : public Player {
+class Rogue : public Player {
 public:
-    Rouge(std::string name);
+    Rogue(std::string name);
 
-    ~Rouge()override = default ;
+    ~Rogue()override = default ;
 
-    Rouge(const Rouge &rouge) = default;
+    Rogue(const Rogue &rouge) = default;
 
-    Rouge &operator=(const Rouge &rouge) = default; 
+    Rogue &operator=(const Rogue &rouge) = default; 
 
     void addCoins(int coinsToAdd) override;
 

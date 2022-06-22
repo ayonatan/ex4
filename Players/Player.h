@@ -42,7 +42,7 @@ public:
     /*
     *  add points to the player's force
     */
-    void buff(int pointsToAdd);
+    void buff(int points);
 
     virtual void heal(int pointsToHeal);
 

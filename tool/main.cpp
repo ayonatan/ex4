@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../Mtmchkin.h"
 
-int main() {
+int main1() {
     printStartGameMessage();
     const int MAX_NUMBER_OF_ROUNDS = 100;
     try {

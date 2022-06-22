@@ -4,6 +4,6 @@
 std::ostream& operator<<(std::ostream& os, const Card &card)
 {
     card.printInfo();
-    printEndOfCardDetails();
+    printEndOfCardDetails(std::cout);
     return os;
 }

@@ -21,7 +21,9 @@ class DeckFileFormatError : public std::exception
         ~DeckFileFormatError() = default;
         const char* what() const noexcept override
         {
-            return "File format error in line";
+            std::string begin("File format error in line");
+            std::string numOfLine(m_numOfLine);
+            return (begin+numOfLine).c_str();
         }
 };
 

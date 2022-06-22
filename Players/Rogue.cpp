@@ -6,9 +6,9 @@
 #include "../utilities.h"
 
 
-Rouge::Rouge(std::string name): Player(name){}
+Rogue::Rogue(std::string name): Player(name){}
 
-void Rouge::addCoins(int coinsToAdd)
+void Rogue::addCoins(int coinsToAdd)
 {
     if (coinsToAdd > 0) 
     {
@@ -20,12 +20,12 @@ void Rouge::addCoins(int coinsToAdd)
     }
 }
 
-void Rouge::printInfo() const
+void Rogue::printInfo() const
 {
-    printPlayerDetails(std::cout, m_name, "Rouge", m_level, m_force, m_HP, m_coins);
+    printPlayerDetails(std::cout, m_name, "Rogue", m_level, m_force, m_HP, m_coins);
 }
 
-std::unique_ptr<Player> Rouge::clone() const
+std::unique_ptr<Player> Rogue::clone() const
 {
-    return std::unique_ptr<Rouge>(new Rouge(*this));
+    return std::unique_ptr<Rogue>(new Rogue(*this));
 }

@@ -36,10 +36,15 @@ int Player::getCoins() const
     return m_coins;
 }
 
-void Player::buff(int pointsToAdd)
+void Player::buff(int points)
 {
-    if (pointsToAdd > 0) {
-        m_force += pointsToAdd;
+    if (m_force + points < 0)
+    {
+        m_force = 0;
+    }
+    else
+    {
+        m_force += points;
     }
 }
 

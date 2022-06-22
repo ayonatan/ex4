@@ -37,6 +37,7 @@ void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
     std::string playerName, playerClass;
     bool isCorrectFormat = false;
     for (int i = 0; i < teamSizeInt; i++) {
+        isCorrectFormat=false;
         printInsertPlayerMessage();
         while (!isCorrectFormat) {
             std::cin >> playerName;
@@ -49,16 +50,23 @@ void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
         isCorrectFormat = false;
         while (!isCorrectFormat) {
             std::cin >> playerClass;
-            if (playerClass == "Wizard") {
+            if (playerClass == "Wizard") 
+            {
                 currentPlayersQueue.push_back(unique_ptr<Wizard>(new Wizard(playerName)));
                 isCorrectFormat = true;
-            } else if (playerClass == "Fighter") {
+            } 
+            else if (playerClass == "Fighter") 
+            {
                 currentPlayersQueue.push_back(unique_ptr<Fighter>(new Fighter(playerName)));
                 isCorrectFormat = true;
-            } else if (playerClass == "Rouge") {
-                currentPlayersQueue.push_back(unique_ptr<Rouge>(new Rouge(playerName)));
+            } 
+            else if (playerClass == "Rogue") 
+            {
+                currentPlayersQueue.push_back(unique_ptr<Rogue>(new Rogue(playerName)));
                 isCorrectFormat = true;
-            } else {
+            } 
+            else 
+            {
                 printInvalidClass();
             }
         }
@@ -67,6 +75,7 @@ void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
 
 Mtmchkin::Mtmchkin(const std::string fileName) : m_numOfRounds(0)
 {
+    printStartGameMessage();
     ifstream source(fileName);
     if (!source) {
         throw DeckFileNotFound();
@@ -126,7 +135,7 @@ void Mtmchkin::playRound() {
         if (currentPlayer->getLevel() == 10) {
             m_winnersDeck.push_back(std::move(currentPlayer));
         } else if (currentPlayer->getHP() == 0) {
-            m_losersDeck.push_back(std::move(currentPlayer));
+            m_losersDeck.push_front(std::move(currentPlayer));
         } else {
             m_currentPlayersQueue.push_back(std::move(currentPlayer));
         }

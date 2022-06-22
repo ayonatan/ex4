@@ -13,6 +13,7 @@ void Vampire::applyEncounter(Player &player) const {
     else 
     {
         player.damage(m_damage);
+        player.buff(-1);
         printLossBattle(player.getName(), "Vampire");
     }
 }

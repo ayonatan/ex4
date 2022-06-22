@@ -16,7 +16,7 @@
 
 /*
  * Prints the details of the player:
- * Tip : Needed for the leaderBoard method (adjusted to print after the ranking section).
+ * Tip : Needed for the leaderBoard method (adjusted to print after the ranking section). 
 
  * @param os - The ostream.
  * @param name - The name of the player.
@@ -54,7 +54,7 @@ void printCardDetails(std::ostream &os, const std::string &name);
 void printEndOfCardDetails(std::ostream &os);
 /*
  * Prints the details of a merchant card:
-
+ 
  * @param os - The ostream.
  * @param playerName - The name of the player who encountered the merchant.
  * @param coins - The player's amount of coins.
@@ -65,7 +65,7 @@ void printMerchantInitialMessageForInteractiveEncounter(std::ostream &os, const 
 
 /*
  * Prints a message informing the player that he has an insufficient coins for this purchase.
-
+ 
  * @param os - The ostream.
  * @return
  *      void
@@ -86,7 +86,7 @@ void printMonsterDetails(std::ostream &os, int force, int damage, int coins, boo
 
 /*
  * Prints outcome summary of encountering the BarFight card:
-
+ 
  * @param isFighter - Indicates weither the player who encountered this card is a Fighter or not.
  * @return
  *      void
@@ -96,7 +96,7 @@ void printBarfightMessage(bool isFighter);
 
 /*
  * Prints outcome summary of encountering the Fairy card:
-
+ 
  * @param isWizard - Indicates weither the player who encountered this card is a Wizard or not.
  * @return
  *      void
@@ -106,7 +106,7 @@ void printFairyMessage(bool isWizard);
 
 /*
  * Prints outcome summary of encountering the PitFall card:
-
+ 
  * @param isRogue - Indicates weither the player who encountered this card is a Rogue or not.
  * @return
  *      void
@@ -116,7 +116,7 @@ void printPitfallMessage(bool isRogue);
 
 /*
  * Prints outcome summary of encountering the Treasure card:
-
+ 
  * @return
  *      void
  *
@@ -125,7 +125,7 @@ void printTreasureMessage();
 
 /*
  * Prints outcome summary of encountering the Merchant card:
-
+ 
  * @param os - The ostream.
  * @param playerName - The name of the player who encountered the merchant.
  * @param type - The type of purchase the player has made (1 for potion / 2 for boost).
@@ -142,7 +142,7 @@ void printMerchantSummary(std::ostream &os, const std::string &playerName, int t
 
 /*
  * Prints info indicating the start of the game:
-
+ 
  * @return
  *      void
  */
@@ -231,7 +231,7 @@ void printLeaderBoardStartMessage();
 
 /*
  * Prints the ranking of a player in the leaderboard:
-
+ 
  * @param ranking - The player's ranking in the leaderBoard.
  * @param player - The player whose ranked in that place to print his info in the leaderboard.
  * @param status - The player's status in the game at this stage (Won/Ongoing/KO).
@@ -242,7 +242,7 @@ void printPlayerLeaderBoard(int ranking, const Player &player);
 
 /*
  * Prints info indicating the end of the game:
-
+ 
  * @return
  *      void
  */
@@ -251,7 +251,7 @@ void printGameEndMessage();
 
 /*
  * Prints a message indicating that the user has entered an invalid team size:
-
+ 
  * @return
  *      void
  */
@@ -259,7 +259,7 @@ void printInvalidTeamSize();
 
 /*
  * Prints a message asking the user to enter a team size:
-
+ 
  * @return
  *      void
  */

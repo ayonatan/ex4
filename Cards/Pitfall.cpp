@@ -5,7 +5,7 @@
 Pitfall::Pitfall() : Card("Pitfall"){}
 
 void Pitfall::applyEncounter(Player &player) const {
-    const Rouge *rouge = dynamic_cast<const Rouge *>(player.clone().get());
+    const Rogue *rouge = dynamic_cast<const Rogue *>(player.clone().get());
     if (rouge == nullptr) {
         printPitfallMessage(false);
         player.damage(-10);
