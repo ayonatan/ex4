@@ -17,22 +17,21 @@ int static initializeTeamSize()
     printEnterTeamSizeMessage();
     std::string teamSize;
     int teamSizeInt;
-    std::cin >> teamSize;
+    std::getline(std::cin,teamSize);
     do {
         try {
-            std::stoi(teamSize, nullptr, 10);
+            teamSizeInt = std::stoi(teamSize, nullptr, 10);
         }
         catch (std::invalid_argument &e) {
             printInvalidInput();
             continue;
         }
-        teamSizeInt = std::stoi(teamSize, nullptr, 10);
         if (teamSizeInt > MAX_TEAM_SIZE || teamSizeInt < MIN_TEAM_SIZE) {
             printInvalidInput();
             continue;
         }
         break;
-    } while (std::cin >> teamSize);
+    } while (std::getline(std::cin,teamSize));
     return teamSizeInt;
 }
 void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
@@ -45,9 +44,9 @@ void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
         isCorrectFormat=false;
         while(!isCorrectFormat)
         {
-            std::cin >> playerName;
-            std::cin >> playerClass;
-            if (!isNameValid(playerName)) 
+            std::getline(std::cin,playerName,' ');
+            std::getline(std::cin,playerClass);
+            if (!isNameValid(playerName))
             {
                 printInvalidName();
                 continue;

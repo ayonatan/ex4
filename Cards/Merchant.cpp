@@ -5,23 +5,24 @@ Merchant::Merchant() : Card("Merchant"){}
 
 void Merchant::applyEncounter(Player &player) const 
 {
-    int payIndex;
+    int payIndex = 0;
     std::string inputLine;
     printMerchantInitialMessageForInteractiveEncounter(std::cout, player.getName(), player.getCoins());
     while (true) 
     {
-        std::getline(std::cin, inputLine);
+        std::getline(std::cin,inputLine);
         try
         {
             payIndex = std::stoi(inputLine);
         }
-        catch(const std::invalid_argument& e)
+        catch(const std::exception& e)
         {
             printInvalidInput();
             continue;
         }
         
-        if (payIndex != DONT_BUY && payIndex != BUY_HP && payIndex != BUY_FORCE) 
+      // if (payIndex != DONT_BUY && payIndex != BUY_HP && payIndex != BUY_FORCE)
+       if (payIndex<0 || payIndex>2)
         {
             printInvalidInput();
             continue;
@@ -33,6 +34,7 @@ void Merchant::applyEncounter(Player &player) const
     {
         if(player.pay(5))
         {
+            player.heal(1);
             printMerchantSummary(std::cout, player.getName(), payIndex, 5);
         }
         else
@@ -46,6 +48,7 @@ void Merchant::applyEncounter(Player &player) const
     {
         if(player.pay(10))
         {
+            player.buff(1);
             printMerchantSummary(std::cout, player.getName(), payIndex, 10);
         }
         else

@@ -367,7 +367,7 @@ int main(){
 	run_test(cardsPrintsTest,"cardsPrintsTest");
 	run_test(playersPrintsTest,"playersPrintsTest");
 	run_test(testCard,"Deck creation test");
-	run_test(dragonDenTest,"Dragon Den simulation test");
+    run_test(dragonDenTest,"Dragon Den simulation test");
 	run_test(goblinCaveTest,"Goblin Cave simulation test");
 	run_test(vampireLairTest,"Vampire Lair simulation test");
 	run_test(nonMostersTest,"Non monsters cards simulation test");
@@ -378,6 +378,7 @@ int main(){
     run_test(roundLimitTest,"Round upper limit test");
     run_test(allTenTest,"All reach lvl 10 test");
     run_test(badPlayerInputTest,"Bad player input test");
+    run_test(merchantInputTest,"Merchant input test");
     //run_test(gangTest1,"Gang Test 1");
     //run_test(gangTest2,"Gang Test 2");
     //run_test(gangTest3,"Gang Test 3");
