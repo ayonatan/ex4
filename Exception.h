@@ -22,7 +22,7 @@ class DeckFileFormatError : public std::exception
         const char* what() const noexcept override
         {
             std::string begin("File format error in line");
-            std::string numOfLine(m_numOfLine);
+            std::string numOfLine =  std::to_string(m_numOfLine);
             return (begin+numOfLine).c_str();
         }
 };
