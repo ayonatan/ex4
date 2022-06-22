@@ -12,8 +12,8 @@ bool static isNameValid(const std::string playerName) {
     }
     return true;
 }
-
-void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
+int static initializeTeamSize()
+{
     printEnterTeamSizeMessage();
     std::string teamSize;
     int teamSizeInt;
@@ -33,23 +33,25 @@ void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
         }
         break;
     } while (std::cin >> teamSize);
-////////////////////////
+    return teamSizeInt;
+}
+void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
+    int teamSizeInt = initializeTeamSize();
     std::string playerName, playerClass;
     bool isCorrectFormat = false;
-    for (int i = 0; i < teamSizeInt; i++) {
-        isCorrectFormat=false;
+    for (int i = 0; i < teamSizeInt; i++) 
+    {
         printInsertPlayerMessage();
-        while (!isCorrectFormat) {
+        isCorrectFormat=false;
+        while(!isCorrectFormat)
+        {
             std::cin >> playerName;
-            if (!isNameValid(playerName)) {
-                printInvalidName();
-            } else {
-                isCorrectFormat = true;
-            }
-        }
-        isCorrectFormat = false;
-        while (!isCorrectFormat) {
             std::cin >> playerClass;
+            if (!isNameValid(playerName)) 
+            {
+                printInvalidName();
+                continue;
+            }
             if (playerClass == "Wizard") 
             {
                 currentPlayersQueue.push_back(unique_ptr<Wizard>(new Wizard(playerName)));
@@ -64,7 +66,7 @@ void static initializePlayers(deque<unique_ptr<Player>> &currentPlayersQueue) {
             {
                 currentPlayersQueue.push_back(unique_ptr<Rogue>(new Rogue(playerName)));
                 isCorrectFormat = true;
-            } 
+            }
             else 
             {
                 printInvalidClass();
